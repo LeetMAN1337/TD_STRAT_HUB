@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Рулетка{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card shadow">
+            <div class="card-header bg-danger text-white"><h3><i class="bi bi-circle-fill"></i> Рулетка</h3></div>
+            <div class="card-body text-center">
+                {% if result %}
+                    <div class="mb-3">
+                        <div class="display-1">🔴 {{ result.number }}</div>
+                        <div class="alert {% if result.win %}alert-success{% else %}alert-danger{% endif %}">
+                            {{ result.message }}
+                            {% if result.win %}<br><strong>+{{ result.payout }} баллов!</strong>{% endif %}
+                        </div>
+                    </div>
+                    <hr>
+                {% endif %}
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.bet_amount.label(class="form-label") }}
+                        {{ form.bet_amount(class="form-control") }}
+                        <small class="text-muted">Баланс: {{ points }}</small>
+                    </div>
+                    <div class="mb-3">
+                        {{ form.bet_number.label(class="form-label") }}
+                        {{ form.bet_number(class="form-control", placeholder="0-36") }}
+                    </div>
+                    {{ form.submit(class="btn btn-danger w-100 py-2") }}
+                </form>
+                <a href="{{ url_for('casino') }}" class="btn btn-outline-secondary mt-3">← Назад</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
