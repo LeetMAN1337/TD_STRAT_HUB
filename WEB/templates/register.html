@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-header bg-gradient-primary text-white p-4 text-center">
+                <h3 class="mb-0"><i class="bi bi-person-plus-fill"></i> Регистрация</h3>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.username.label(class="form-label fw-bold") }}
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-person"></i></span>
+                            {{ form.username(class="form-control", placeholder="Придумайте имя") }}
+                        </div>
+                        {% if form.username.errors %}
+                            <div class="invalid-feedback d-block">{{ form.username.errors[0] }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.email.label(class="form-label fw-bold") }}
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                            {{ form.email(class="form-control", placeholder="your@email.com") }}
+                        </div>
+                        {% if form.email.errors %}
+                            <div class="invalid-feedback d-block">{{ form.email.errors[0] }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.password.label(class="form-label fw-bold") }}
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                            {{ form.password(class="form-control", placeholder="Минимум 6 символов") }}
+                        </div>
+                        {% if form.password.errors %}
+                            <div class="invalid-feedback d-block">{{ form.password.errors[0] }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-4">
+                        {{ form.confirm_password.label(class="form-label fw-bold") }}
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                            {{ form.confirm_password(class="form-control", placeholder="Повторите пароль") }}
+                        </div>
+                        {% if form.confirm_password.errors %}
+                            <div class="invalid-feedback d-block">{{ form.confirm_password.errors[0] }}</div>
+                        {% endif %}
+                    </div>
+                    {{ form.submit(class="btn btn-primary w-100 py-2") }}
+                </form>
+                <p class="mt-3 text-center text-muted">
+                    Уже есть аккаунт? <a href="{{ url_for('login') }}" class="text-decoration-none">Войти</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
