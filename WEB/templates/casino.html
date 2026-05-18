@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Казино{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-4"><i class="bi bi-dice-5-fill"></i> Казино TD Strategy Hub</h1>
+        <p class="lead">Потратьте баллы и испытайте удачу! Баллы можно получить за лайки к вашим стратегиям и при регистрации. Выигрыш увеличивает ваш баланс.</p>
+    </div>
+</div>
+
+<div class="row g-4 mt-2">
+    <!-- Кости -->
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="bi bi-dice-6 display-1 text-primary"></i>
+                <h3 class="card-title">Кости</h3>
+                <p class="card-text">Угадайте сумму двух кубиков (2–12).<br>Выигрыш <strong>x2</strong>.</p>
+                <a href="{{ url_for('casino_dice') }}" class="btn btn-primary">Играть</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Рулетка -->
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="bi bi-circle-fill display-1 text-danger"></i>
+                <h3 class="card-title">Рулетка</h3>
+                <p class="card-text">Ставка на число от 0 до 36.<br>Выигрыш <strong>36:1</strong>.</p>
+                <a href="{{ url_for('casino_roulette') }}" class="btn btn-danger">Играть</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Слоты -->
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="bi bi-grid-3x3-gap-fill display-1 text-warning"></i>
+                <h3 class="card-title">Слоты</h3>
+                <p class="card-text">Три барабана. Совпадут — <strong>x10</strong>.</p>
+                <a href="{{ url_for('casino_slots') }}" class="btn btn-warning">Играть</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Угадай число -->
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="bi bi-question-circle display-1 text-success"></i>
+                <h3 class="card-title">Угадай число</h3>
+                <p class="card-text">От 1 до 10.<br>Выигрыш <strong>x3</strong>.</p>
+                <a href="{{ url_for('casino_guess') }}" class="btn btn-success">Играть</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mines -->
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="bi bi-hexagon-fill display-1 text-danger"></i>
+                <h3 class="card-title">Mines</h3>
+                <p class="card-text">Открывайте ячейки, избегая мин. Заберите выигрыш вовремя!</p>
+                <a href="{{ url_for('casino_mines') }}" class="btn btn-outline-danger">Играть</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

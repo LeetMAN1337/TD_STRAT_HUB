@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Слоты{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card shadow">
+            <div class="card-header bg-warning"><h3><i class="bi bi-grid-3x3-gap-fill"></i> Слоты</h3></div>
+            <div class="card-body text-center">
+                {% if result %}
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-center gap-3 display-4">
+                            <span class="badge bg-secondary p-3">{{ result.slots[0] }}</span>
+                            <span class="badge bg-secondary p-3">{{ result.slots[1] }}</span>
+                            <span class="badge bg-secondary p-3">{{ result.slots[2] }}</span>
+                        </div>
+                        <div class="alert {% if result.win %}alert-success{% else %}alert-danger{% endif %} mt-3">
+                            {{ result.message }}
+                            {% if result.win %}<br><strong>+{{ result.payout }} баллов!</strong>{% endif %}
+                        </div>
+                    </div>
+                    <hr>
+                {% endif %}
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.bet_amount.label(class="form-label") }}
+                        {{ form.bet_amount(class="form-control") }}
+                        <small class="text-muted">Баланс: {{ points }}</small>
+                    </div>
+                    {{ form.submit(class="btn btn-warning w-100 py-2") }}
+                </form>
+                <a href="{{ url_for('casino') }}" class="btn btn-outline-secondary mt-3">← Назад</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
